@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Hello World!</title>
+	</head>
+	<body>
+		<script>
+			console.log(window.history.state)
+
+			let id = window.history.state ? window.history.state.id : 0
+			window.history.replaceState({ id: id }, undefined, window.location.href)
+
+			const button = document.createElement("button")
+			button.innerText = "next"
+			button.addEventListener("click", () => {
+				id += 1
+				window.history.pushState({ id: id }, "", window.location.href)
+				console.log(window.history.state)
+			})
+
+			document.body.appendChild(button)
+		</script>
+	</body>
+</html>
